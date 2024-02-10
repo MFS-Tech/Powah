@@ -4,6 +4,10 @@ import androidx.lifecycle.viewModelScope
 import com.mfstech.powah.common.CommonViewModel
 import com.mfstech.powah.common.database.model.Device
 import com.mfstech.powah.home.business.HomeRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -15,15 +19,19 @@ class HomeViewModel(
 
     override fun onStart() {
         viewModelScope.launch(dispatcher) {
-            val devices = repository.findDevices()
-            view.bindDevices(devices)
+            repository.findDevices()
+                .onEach(view::bindDevices)
+                .flowOn(Dispatchers.Main)
+                .collect()
         }
     }
 
     override fun onSearchChange(search: String) {
         viewModelScope.launch(dispatcher) {
-            val devices = repository.findDevices(search)
-            view.bindDevices(devices)
+            repository.findDevices(search)
+                .onEach(view::bindDevices)
+                .flowOn(Dispatchers.Main)
+                .collect()
         }
     }
 

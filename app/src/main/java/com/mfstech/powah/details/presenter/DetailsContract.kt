@@ -8,10 +8,9 @@ interface DetailsContract {
 
     interface View : CommonContract.View {
         fun bindDevice(device: Device)
-        fun showDeleteConfirmationDialog()
-        fun openEditDevice(device: Device)
+        fun openEditDevice(id: Int)
         fun bindDeviceConnecting()
-        fun bindConnectionFailure()
+        fun bindConnectionFailure(error: Throwable?)
         fun bindNewEvent(sensorEvent: SensorEvent)
     }
 
@@ -20,7 +19,5 @@ interface DetailsContract {
         fun onPause()
         fun onBackClicked()
         fun onEditClicked()
-        fun onDeleteClicked()
-        fun onDeleteConfirm()
     }
 }

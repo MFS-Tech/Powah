@@ -2,12 +2,13 @@ package com.mfstech.powah.details.presenter
 
 import androidx.lifecycle.viewModelScope
 import com.mfstech.powah.common.CommonViewModel
-import com.mfstech.powah.common.database.model.Device
 import com.mfstech.powah.details.business.DetailsRepository
 import com.mfstech.powah.details.model.SensorEventListenerState
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ import kotlin.coroutines.CoroutineContext
 
 class DetailsViewModel(
     override val view: DetailsContract.View,
-    private val device: Device,
+    private val id: Int,
     private val repository: DetailsRepository,
     private val dispatcher: CoroutineContext
 ) : CommonViewModel(), DetailsContract.ViewModel {
@@ -25,32 +26,27 @@ class DetailsViewModel(
     private fun handleNewEventState(state: SensorEventListenerState) {
         when (state) {
             is SensorEventListenerState.Connecting -> view.bindDeviceConnecting()
-            is SensorEventListenerState.ConnectionFailed -> view.bindConnectionFailure()
+            is SensorEventListenerState.ConnectionFailed -> view.bindConnectionFailure(state.throwable)
             is SensorEventListenerState.SensorEventListenerReceived -> view.bindNewEvent(state.sensorEvent)
         }
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onResume() {
-        view.bindDevice(device)
         job = viewModelScope.launch(dispatcher) {
-            repository.getDeviceSensors()
-                .onEach(::handleNewEventState)
+            repository.getDevice(id)
+                .onEach(view::bindDevice)
                 .flowOn(Dispatchers.Main)
-                .collect()
+                .flatMapMerge { device ->
+                    repository.getDeviceSensors(device)
+                        .onEach(::handleNewEventState)
+                        .flowOn(Dispatchers.Main)
+                }.collect()
         }
     }
 
     override fun onEditClicked() {
-        view.openEditDevice(device)
-    }
-
-    override fun onDeleteClicked() {
-        view.showDeleteConfirmationDialog()
-    }
-
-    override fun onDeleteConfirm() {
-        viewModelScope.launch(dispatcher) { repository.deleteDevice(device) }
-        view.goBack()
+        view.openEditDevice(id)
     }
 
     override fun onPause() {

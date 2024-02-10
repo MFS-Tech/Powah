@@ -12,12 +12,23 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class DetailsRepositoryImpl(
-    private val request: Request,
     private val client: OkHttpClient,
     private val dao: DeviceDao
 ) : DetailsRepository {
 
-    override fun getDeviceSensors(): Flow<SensorEventListenerState> = callbackFlow {
+    override fun getDevice(id: Int): Flow<Device> = dao.get(id)
+
+    override fun getRequest(device: Device): Request {
+        return Request.Builder()
+            .url("http://${device.route}/events")
+            .header("Accept", "application/json; q=0.5")
+            .addHeader("Accept", "text/event-stream")
+            .build()
+    }
+
+    override fun getDeviceSensors(device: Device): Flow<SensorEventListenerState> = callbackFlow {
+        val request = getRequest(device)
+
         val listener = eventSourceListener(
             client = client,
             request = request,
@@ -36,8 +47,6 @@ class DetailsRepositoryImpl(
         send(SensorEventListenerState.Connecting)
         awaitClose { listener.cancel() }
     }
-
-    override suspend fun deleteDevice(device: Device) = dao.delete(device)
 
     companion object {
         const val TAG = "DetailsRepo"

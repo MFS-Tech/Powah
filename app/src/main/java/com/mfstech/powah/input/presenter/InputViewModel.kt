@@ -6,20 +6,29 @@ import com.mfstech.powah.common.database.model.Device
 import com.mfstech.powah.common.util.InputWarning
 import com.mfstech.powah.common.util.validate
 import com.mfstech.powah.input.business.InputRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class InputViewModel(
     override val view: InputContract.View,
-    private val device: Device?,
+    private val id: Int,
     private val repository: InputRepository,
     private val dispatcher: CoroutineContext
 ) : CommonViewModel(), InputContract.ViewModel {
 
     override fun onStart() {
-        device?.let {
-            view.bindName(it.name)
-            view.bindRoute(it.route)
+        viewModelScope.launch(dispatcher) {
+            repository.get(id)
+                .onEach { device ->
+                    view.bindName(device.name)
+                    view.bindRoute(device.route)
+                }
+                .flowOn(Dispatchers.Main)
+                .collect()
         }
     }
 
@@ -45,19 +54,8 @@ class InputViewModel(
 
         if (predicates.all { it }) {
             viewModelScope.launch(dispatcher) {
-                repository.save(Device(id = device?.id ?: 0, name = name, route = route))
+                repository.save(Device(id = id, name = name, route = route))
             }
-            view.goBack()
-        }
-    }
-
-    override fun onDeleteClicked() {
-        view.showDeleteConfirmation()
-    }
-
-    override fun onDeleteConfirm() {
-        device?.let {
-            viewModelScope.launch(dispatcher) { repository.delete(it) }
             view.goBack()
         }
     }

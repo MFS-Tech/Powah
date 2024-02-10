@@ -1,8 +1,9 @@
 package com.mfstech.powah.home.business
 
 import com.mfstech.powah.common.database.model.Device
+import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
 
-    suspend fun findDevices(search: String = ""): List<Device>
+    fun findDevices(search: String = ""): Flow<List<Device>>
 }

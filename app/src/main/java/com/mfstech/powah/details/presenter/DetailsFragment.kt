@@ -1,13 +1,10 @@
 package com.mfstech.powah.details.presenter
 
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.mfstech.powah.R
 import com.mfstech.powah.common.CommonFragment
 import com.mfstech.powah.common.database.model.Device
 import com.mfstech.powah.common.sse.SensorEvent
-import com.mfstech.powah.confirmation.ConfirmationDialogState
 import com.mfstech.powah.databinding.FragmentDetailsBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -23,7 +20,7 @@ class DetailsFragment :
     }
 
     override val viewModel: DetailsViewModel by inject {
-        parametersOf(this, args.device)
+        parametersOf(this, args.id)
     }
 
     private val adapter = DetailsAdapter()
@@ -32,7 +29,6 @@ class DetailsFragment :
         binding.eventsList.adapter = adapter
         binding.backButton.setOnClickListener { viewModel.onBackClicked() }
         binding.editButton.setOnClickListener { viewModel.onEditClicked() }
-        binding.deleteButton.setOnClickListener { viewModel.onDeleteClicked() }
     }
 
     override fun bindDevice(device: Device) {
@@ -46,36 +42,22 @@ class DetailsFragment :
         binding.loadingContainer.visibility = View.VISIBLE
     }
 
-    override fun bindConnectionFailure() {
+    override fun bindConnectionFailure(error: Throwable?) {
         binding.eventsList.visibility = View.GONE
-        binding.warning.visibility = View.VISIBLE
         binding.loadingContainer.visibility = View.GONE
+        binding.warning.visibility = View.VISIBLE
+        binding.warning.text = error?.message
     }
 
     override fun bindNewEvent(sensorEvent: SensorEvent) {
-        binding.eventsList.visibility = View.VISIBLE
         binding.warning.visibility = View.GONE
         binding.loadingContainer.visibility = View.GONE
+        binding.eventsList.visibility = View.VISIBLE
         adapter.setEvent(sensorEvent)
     }
 
-    override fun showDeleteConfirmationDialog() {
-        findNavController().navigate(
-            DetailsFragmentDirections.openConfirmationDialog(
-                data = ConfirmationDialogState(
-                    title = getString(R.string.delete_confirmation_title),
-                    description = getString(R.string.delete_confirmation_description),
-                    positiveButton = ConfirmationDialogState.Button(getString(R.string.delete_confirmation_positive_button)) {
-                        viewModel.onDeleteConfirm()
-                    },
-                    negativeButton = ConfirmationDialogState.Button(getString(R.string.delete_confirmation_negative_button))
-                )
-            )
-        )
-    }
-
-    override fun openEditDevice(device: Device) {
-        navigate(DetailsFragmentDirections.inputDevice(device))
+    override fun openEditDevice(id: Int) {
+        navigate(DetailsFragmentDirections.inputDevice(id))
     }
 
     override fun onResume() {

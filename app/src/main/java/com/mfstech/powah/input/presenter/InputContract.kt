@@ -9,7 +9,6 @@ interface InputContract {
         fun bindName(name: String)
         fun bindRoute(route: String)
         fun showRouteWarning(warning: InputWarning)
-        fun showDeleteConfirmation()
         fun clearRouteWarning()
     }
 
@@ -17,8 +16,6 @@ interface InputContract {
         fun onStart()
         fun validateRoute(route: String): Boolean
         fun onSaveClicked(name: String, route: String)
-        fun onDeleteClicked()
-        fun onDeleteConfirm()
         fun onBackClicked()
     }
 }

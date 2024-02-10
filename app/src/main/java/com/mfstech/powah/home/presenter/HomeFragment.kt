@@ -38,17 +38,15 @@ class HomeFragment : CommonFragment<FragmentHomeBinding, HomeViewModel>(), HomeC
     }
 
     override fun openDevice(device: Device) {
-        navigate(HomeFragmentDirections.openDetails(device))
+        navigate(HomeFragmentDirections.openDetails(device.id))
     }
 
     override fun openEditDevice(device: Device) {
-        navigate(HomeFragmentDirections.inputDevice(device))
+        navigate(HomeFragmentDirections.inputDevice(device.id))
     }
 
     override fun bindDevices(devices: List<Device>) {
         deviceListAdapter.devices = devices
     }
-
-
 }
 

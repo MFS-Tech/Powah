@@ -13,9 +13,8 @@ class HomeDeviceListAdapter(
 
     var devices: List<Device> = emptyList()
         set(value) {
-            val oldSize = itemCount
             field = value
-            notifyItemRangeChanged(0, oldSize)
+            notifyItemRangeChanged(0, value.size)
         }
 
     override fun onCreateViewHolder(
