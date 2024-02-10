@@ -6,7 +6,7 @@
     android:background="@drawable/bottomsheet_background"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context="mfstech.apps.powah.confirmation.ConfirmationDialogFragment">
+    tools:context="com.mfstech.powah.confirmation.ConfirmationDialogFragment">
 
     <TextView
         android:id="@+id/title"

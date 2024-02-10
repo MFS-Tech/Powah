@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_graph_home_fragment"
-        android:name="mfstech.apps.powah.home.presenter.HomeFragment"
+        android:name="com.mfstech.powah.home.presenter.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
         <action
@@ -23,13 +23,13 @@
 
     <fragment
         android:id="@+id/nav_graph_add_device_fragment"
-        android:name="mfstech.apps.powah.input.presenter.InputFragment"
+        android:name="com.mfstech.powah.input.presenter.InputFragment"
         android:label="@string/add_device_fragment_label"
         tools:layout="@layout/fragment_input">
         <argument
             android:name="device"
             android:defaultValue="@null"
-            app:argType="mfstech.apps.powah.common.database.model.Device"
+            app:argType="com.mfstech.powah.common.database.model.Device"
             app:nullable="true" />
         <action
             android:id="@+id/open_confirmation_dialog"
@@ -38,12 +38,12 @@
 
     <fragment
         android:id="@+id/nav_graph_details_fragment"
-        android:name="mfstech.apps.powah.details.presenter.DetailsFragment"
+        android:name="com.mfstech.powah.details.presenter.DetailsFragment"
         android:label="@string/details_fragment_label"
         tools:layout="@layout/fragment_details">
         <argument
             android:name="device"
-            app:argType="mfstech.apps.powah.common.database.model.Device" />
+            app:argType="com.mfstech.powah.common.database.model.Device" />
         <action
             android:id="@+id/input_device"
             app:destination="@id/nav_graph_add_device_fragment" />
@@ -53,11 +53,11 @@
     </fragment>
     <dialog
         android:id="@+id/nav_graph_confirmation_dialog"
-        android:name="mfstech.apps.powah.confirmation.ConfirmationDialogFragment"
+        android:name="com.mfstech.powah.confirmation.ConfirmationDialogFragment"
         android:label="@string/confirmation_fragment_label"
         tools:layout="@layout/fragment_confirmation">
         <argument
             android:name="data"
-            app:argType="mfstech.apps.powah.confirmation.ConfirmationDialogState" />
+            app:argType="com.mfstech.powah.confirmation.ConfirmationDialogState" />
     </dialog>
 </navigation>

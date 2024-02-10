@@ -4,14 +4,16 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("org.jetbrains.kotlin.plugin.parcelize")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
-    namespace = "mfstech.apps.powah"
+    namespace = "com.mfstech.powah"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "mfstech.apps.powah"
+        applicationId = "com.mfstech.powah"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
@@ -27,6 +29,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     buildFeatures {
@@ -57,6 +60,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp-sse")
 
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-crashlytics")
 
     val koinVersion = "3.5.3"
     implementation("io.insert-koin:koin-core:$koinVersion")
