@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Powah</string>
+
+    <string name="back_button_content_description">Back, button</string>
+    <string name="delete_button_content_description">Delete, button</string>
+    <string name="edit_button_content_description">Edit, button</string>
+    <string name="warning_content_description">Warning triangle</string>
+
+    <string name="input_warning_is_blank">Blank field</string>
+    <string name="input_warning_invalid_ipv4">Invalid IPV4</string>
+
+    <string name="home_fragment_label">Home</string>
+    <string name="home_add_device_content_description">Add new device</string>
+
+    <string name="add_device_fragment_label">Add Device</string>
+    <string name="add_device_input_name_hint">Name</string>
+    <string name="add_device_input_route_hint">Route</string>
+    <string name="add_device_save_button">Save</string>
+
+    <string name="details_fragment_label">Details</string>
+    <string name="confirmation_fragment_label">Confirmation</string>
+
+    <string name="delete_confirmation_title">Confirmation</string>
+    <string name="delete_confirmation_description">You really want to delete this device?</string>
+    <string name="delete_confirmation_positive_button">Yes</string>
+    <string name="delete_confirmation_negative_button">No</string>
+
+    <string name="sensor_label_mac_address">Mac Address</string>
+    <string name="sensor_label_connected_ssid">SSID</string>
+    <string name="sensor_label_power">Power</string>
+    <string name="sensor_label_energy">Energy</string>
+    <string name="sensor_label_current">Current</string>
+    <string name="sensor_label_voltage">Voltage</string>
+    <string name="sensor_label_up_time">Up Time</string>
+    <string name="sensor_label_wifi_signal">Wifi Signal</string>
+    <string name="sensor_label_total_energy">Total Energy</string>
+    <string name="sensor_label_total_daily_energy">Total Daily Energy</string>
+
+    <string name="search_bar_hint">Search</string>
+</resources>
