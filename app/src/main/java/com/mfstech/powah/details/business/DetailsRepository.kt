@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import okhttp3.Request
 
 interface DetailsRepository {
-    fun getDevice(id: Int): Flow<Device>
+    fun getDevice(id: Int): Flow<Device?>
     fun getDeviceSensors(device: Device): Flow<SensorEventListenerState>
     fun getRequest(device: Device): Request
 }

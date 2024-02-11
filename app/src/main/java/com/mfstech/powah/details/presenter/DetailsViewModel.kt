@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
@@ -35,6 +36,7 @@ class DetailsViewModel(
     override fun onResume() {
         job = viewModelScope.launch(dispatcher) {
             repository.getDevice(id)
+                .filterNotNull()
                 .onEach(view::bindDevice)
                 .flowOn(Dispatchers.Main)
                 .flatMapMerge { device ->

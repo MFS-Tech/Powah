@@ -3,7 +3,7 @@ package com.mfstech.powah.common.util
 import androidx.annotation.StringRes
 import com.mfstech.powah.R
 
-private interface Predicate {
+private fun interface Predicate {
     fun verify(input: String): Boolean
 }
 

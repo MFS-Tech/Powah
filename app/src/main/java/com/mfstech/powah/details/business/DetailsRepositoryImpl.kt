@@ -16,7 +16,7 @@ class DetailsRepositoryImpl(
     private val dao: DeviceDao
 ) : DetailsRepository {
 
-    override fun getDevice(id: Int): Flow<Device> = dao.get(id)
+    override fun getDevice(id: Int): Flow<Device?> = dao.get(id)
 
     override fun getRequest(device: Device): Request {
         return Request.Builder()

@@ -1,5 +1,6 @@
 package com.mfstech.powah.home.presenter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,9 +13,10 @@ class HomeDeviceListAdapter(
 ) : RecyclerView.Adapter<HomeDeviceListItemViewHolder>() {
 
     var devices: List<Device> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
-            notifyItemRangeChanged(0, value.size)
+            notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(

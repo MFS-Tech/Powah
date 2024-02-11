@@ -6,12 +6,13 @@
     android:background="@drawable/bottomsheet_background"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context="com.mfstech.powah.confirmation.ConfirmationDialogFragment">
+    tools:context="com.mfstech.powah.options.DeviceOptionsDialogFragment">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -27,9 +28,11 @@
 
     <Button
         android:id="@+id/positive_button"
+        style="Material3.Button.P"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColorHighlight="#D1C9C9"
         tools:text="Yes" />
 
     <Button

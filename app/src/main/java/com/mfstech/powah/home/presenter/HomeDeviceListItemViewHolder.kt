@@ -1,8 +1,9 @@
 package com.mfstech.powah.home.presenter
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.ext.asGone
+import com.mfstech.powah.common.ext.asVisible
 import com.mfstech.powah.databinding.ItemDeviceBinding
 
 class HomeDeviceListItemViewHolder(
@@ -17,13 +18,14 @@ class HomeDeviceListItemViewHolder(
             onLongClick(device)
             true
         }
+
         if (device.name.isBlank()) {
             deviceName.text = device.route
-            deviceRoute.visibility = View.GONE
+            deviceRoute.asGone()
         } else {
             deviceName.text = device.name
             deviceRoute.text = device.route
-            deviceRoute.visibility = View.VISIBLE
+            deviceRoute.asVisible()
         }
     }
 }

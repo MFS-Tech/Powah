@@ -2,7 +2,6 @@
     <string name="app_name">Powah</string>
 
     <string name="back_button_content_description">Back, button</string>
-    <string name="delete_button_content_description">Delete, button</string>
     <string name="edit_button_content_description">Edit, button</string>
     <string name="warning_content_description">Warning triangle</string>
 

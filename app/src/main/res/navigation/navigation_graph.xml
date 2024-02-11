@@ -18,7 +18,7 @@
             app:destination="@id/nav_graph_details_fragment" />
         <action
             android:id="@+id/open_confirmation_dialog"
-            app:destination="@id/nav_graph_confirmation_dialog" />
+            app:destination="@id/nav_graph_device_options_dialog" />
     </fragment>
 
     <fragment
@@ -32,7 +32,7 @@
             app:argType="integer" />
         <action
             android:id="@+id/open_confirmation_dialog"
-            app:destination="@id/nav_graph_confirmation_dialog" />
+            app:destination="@id/nav_graph_device_options_dialog" />
     </fragment>
 
     <fragment
@@ -48,15 +48,19 @@
             app:destination="@id/nav_graph_input_fragment" />
         <action
             android:id="@+id/open_confirmation_dialog"
-            app:destination="@id/nav_graph_confirmation_dialog" />
+            app:destination="@id/nav_graph_device_options_dialog" />
     </fragment>
     <dialog
-        android:id="@+id/nav_graph_confirmation_dialog"
-        android:name="com.mfstech.powah.confirmation.ConfirmationDialogFragment"
+        android:id="@+id/nav_graph_device_options_dialog"
+        android:name="com.mfstech.powah.options.DeviceOptionsDialogFragment"
         android:label="@string/confirmation_fragment_label"
-        tools:layout="@layout/fragment_confirmation">
+        tools:layout="@layout/fragment_device_options">
         <argument
             android:name="data"
-            app:argType="com.mfstech.powah.confirmation.ConfirmationDialogState" />
+            app:argType="com.mfstech.powah.options.DeviceOptionsDialogState" />
+
+        <action
+            android:id="@+id/input_device"
+            app:destination="@id/nav_graph_input_fragment" />
     </dialog>
 </navigation>

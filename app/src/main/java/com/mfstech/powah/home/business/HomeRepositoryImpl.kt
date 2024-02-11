@@ -9,4 +9,8 @@ class HomeRepositoryImpl(
 ) : HomeRepository {
 
     override fun findDevices(search: String): Flow<List<Device>> = dao.find(search)
+
+    override suspend fun deleteDevice(device: Device): Boolean {
+        return dao.delete(device) > 0
+    }
 }

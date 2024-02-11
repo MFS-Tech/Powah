@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.future.future
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -44,6 +45,14 @@ class HomeViewModel(
     }
 
     override fun onDeviceLongClicked(device: Device) {
+        view.showDialogMenu(device)
+    }
+
+    override fun onDeviceOptionsEditClicked(device: Device) {
         view.openEditDevice(device)
+    }
+
+    override fun onDeviceOptionsDeleteClicked(device: Device): Boolean {
+        return viewModelScope.future(dispatcher) { repository.deleteDevice(device) }.get()
     }
 }

@@ -8,6 +8,7 @@ import com.mfstech.powah.common.util.validate
 import com.mfstech.powah.input.business.InputRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ class InputViewModel(
     override fun onStart() {
         viewModelScope.launch(dispatcher) {
             repository.get(id)
+                .filterNotNull()
                 .onEach { device ->
                     view.bindName(device.name)
                     view.bindRoute(device.route)

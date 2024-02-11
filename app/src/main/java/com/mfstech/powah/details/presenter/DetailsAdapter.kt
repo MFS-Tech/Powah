@@ -26,6 +26,12 @@ class DetailsAdapter : RecyclerView.Adapter<SensorEventViewHolder>() {
         holder.bind(list[position])
     }
 
+    fun clear() {
+        val lastSize = this.list.size
+        this.list.clear()
+        notifyItemRangeRemoved(0, lastSize)
+    }
+
     fun setEvent(sensorEvent: SensorEvent) {
         if (sensorEvent.sensor == null) return
 

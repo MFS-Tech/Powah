@@ -10,6 +10,7 @@ interface HomeContract {
         fun openDevice(device: Device)
         fun openEditDevice(device: Device)
         fun bindDevices(devices: List<Device>)
+        fun showDialogMenu(device: Device)
     }
 
     interface ViewModel : CommonContract.ViewModel<View> {
@@ -18,5 +19,7 @@ interface HomeContract {
         fun onAddNewDeviceClicked()
         fun onDeviceClicked(device: Device)
         fun onDeviceLongClicked(device: Device)
+        fun onDeviceOptionsEditClicked(device: Device)
+        fun onDeviceOptionsDeleteClicked(device: Device): Boolean
     }
 }

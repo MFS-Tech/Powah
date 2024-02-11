@@ -13,10 +13,10 @@ interface DeviceDao {
     suspend fun save(device: Device)
 
     @Delete
-    suspend fun delete(device: Device)
+    suspend fun delete(device: Device): Int
 
     @Query("SELECT * FROM Device WHERE id = :id")
-    fun get(id: Int): Flow<Device>
+    fun get(id: Int): Flow<Device?>
 
     @Query("SELECT * FROM Device WHERE name LIKE '%'||:search||'%' OR route LIKE '%'||:search||'%'")
     fun find(search: String): Flow<List<Device>>

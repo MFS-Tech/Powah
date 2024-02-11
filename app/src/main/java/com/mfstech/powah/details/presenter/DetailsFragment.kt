@@ -1,9 +1,10 @@
 package com.mfstech.powah.details.presenter
 
-import android.view.View
 import androidx.navigation.fragment.navArgs
 import com.mfstech.powah.common.CommonFragment
 import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.ext.asGone
+import com.mfstech.powah.common.ext.asVisible
 import com.mfstech.powah.common.sse.SensorEvent
 import com.mfstech.powah.databinding.FragmentDetailsBinding
 import org.koin.android.ext.android.inject
@@ -32,27 +33,32 @@ class DetailsFragment :
     }
 
     override fun bindDevice(device: Device) {
-        binding.deviceName.text = device.name
-        binding.deviceRoute.text = device.route
+        if (device.name.isBlank()) {
+            binding.deviceRoute.text = ""
+            binding.deviceName.text = device.route
+        } else {
+            binding.deviceName.text = device.name
+            binding.deviceRoute.text = device.route
+        }
     }
 
     override fun bindDeviceConnecting() {
-        binding.eventsList.visibility = View.GONE
-        binding.warning.visibility = View.GONE
-        binding.loadingContainer.visibility = View.VISIBLE
+        binding.eventsList.asGone()
+        binding.warning.asGone()
+        binding.loadingContainer.asVisible()
     }
 
     override fun bindConnectionFailure(error: Throwable?) {
-        binding.eventsList.visibility = View.GONE
-        binding.loadingContainer.visibility = View.GONE
-        binding.warning.visibility = View.VISIBLE
+        binding.eventsList.asGone()
+        binding.loadingContainer.asGone()
+        binding.warning.asVisible()
         binding.warning.text = error?.message
     }
 
     override fun bindNewEvent(sensorEvent: SensorEvent) {
-        binding.warning.visibility = View.GONE
-        binding.loadingContainer.visibility = View.GONE
-        binding.eventsList.visibility = View.VISIBLE
+        binding.warning.asGone()
+        binding.loadingContainer.asGone()
+        binding.eventsList.asVisible()
         adapter.setEvent(sensorEvent)
     }
 
@@ -68,5 +74,6 @@ class DetailsFragment :
     override fun onPause() {
         super.onPause()
         viewModel.onPause()
+        adapter.clear()
     }
 }
