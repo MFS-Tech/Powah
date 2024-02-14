@@ -1,4 +1,4 @@
-package com.mfstech.powah.common.ext
+package com.mfstech.powah.common.util.ext
 
 import android.view.View
 

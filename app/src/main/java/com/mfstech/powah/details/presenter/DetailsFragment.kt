@@ -1,11 +1,11 @@
 package com.mfstech.powah.details.presenter
 
 import androidx.navigation.fragment.navArgs
-import com.mfstech.powah.common.CommonFragment
-import com.mfstech.powah.common.database.model.Device
-import com.mfstech.powah.common.ext.asGone
-import com.mfstech.powah.common.ext.asVisible
-import com.mfstech.powah.common.sse.SensorEvent
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.business.sse.SensorEvent
+import com.mfstech.powah.common.presenter.fragment.CommonFragment
+import com.mfstech.powah.common.util.ext.asGone
+import com.mfstech.powah.common.util.ext.asVisible
 import com.mfstech.powah.databinding.FragmentDetailsBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

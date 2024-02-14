@@ -1,4 +1,4 @@
-package com.mfstech.powah.common
+package com.mfstech.powah.common.presenter
 
 import androidx.lifecycle.ViewModel
 

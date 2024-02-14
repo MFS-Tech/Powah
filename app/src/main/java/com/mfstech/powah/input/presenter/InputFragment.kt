@@ -2,7 +2,7 @@ package com.mfstech.powah.input.presenter
 
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.navArgs
-import com.mfstech.powah.common.CommonFragment
+import com.mfstech.powah.common.presenter.fragment.CommonFragment
 import com.mfstech.powah.common.util.InputWarning
 import com.mfstech.powah.databinding.FragmentInputBinding
 import org.koin.android.ext.android.inject
@@ -38,6 +38,11 @@ class InputFragment :
     override fun onStart() {
         super.onStart()
         viewModel.onStart()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.onDestroy()
     }
 
     override fun showRouteWarning(warning: InputWarning) {

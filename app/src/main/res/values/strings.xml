@@ -11,6 +11,9 @@
     <string name="home_fragment_label">Home</string>
     <string name="home_add_device_content_description">Add new device</string>
 
+    <string name="device_options_delete_button">Delete</string>
+    <string name="device_options_edit_button">Edit</string>
+
     <string name="add_device_fragment_label">Add Device</string>
     <string name="add_device_input_name_hint">Name</string>
     <string name="add_device_input_route_hint">Route</string>
@@ -18,11 +21,6 @@
 
     <string name="details_fragment_label">Details</string>
     <string name="confirmation_fragment_label">Confirmation</string>
-
-    <string name="delete_confirmation_title">Confirmation</string>
-    <string name="delete_confirmation_description">You really want to delete this device?</string>
-    <string name="delete_confirmation_positive_button">Yes</string>
-    <string name="delete_confirmation_negative_button">No</string>
 
     <string name="sensor_label_mac_address">Mac Address</string>
     <string name="sensor_label_connected_ssid">SSID</string>

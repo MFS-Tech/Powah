@@ -1,9 +1,9 @@
 package com.mfstech.powah.details.business
 
 import android.util.Log
-import com.mfstech.powah.common.database.DeviceDao
-import com.mfstech.powah.common.database.model.Device
-import com.mfstech.powah.common.sse.eventSourceListener
+import com.mfstech.powah.common.business.database.DeviceDao
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.business.sse.eventSourceListener
 import com.mfstech.powah.details.model.SensorEventListenerState
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow

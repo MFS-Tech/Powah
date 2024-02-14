@@ -1,7 +1,7 @@
 package com.mfstech.powah.home.presenter
 
-import com.mfstech.powah.common.CommonContract
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.presenter.fragment.CommonContract
 
 interface HomeContract {
 
@@ -11,6 +11,7 @@ interface HomeContract {
         fun openEditDevice(device: Device)
         fun bindDevices(devices: List<Device>)
         fun showDialogMenu(device: Device)
+
     }
 
     interface ViewModel : CommonContract.ViewModel<View> {
@@ -21,5 +22,6 @@ interface HomeContract {
         fun onDeviceLongClicked(device: Device)
         fun onDeviceOptionsEditClicked(device: Device)
         fun onDeviceOptionsDeleteClicked(device: Device): Boolean
+        fun onDestroy()
     }
 }

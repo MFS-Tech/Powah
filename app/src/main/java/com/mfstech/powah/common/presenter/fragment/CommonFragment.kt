@@ -1,4 +1,4 @@
-package com.mfstech.powah.common
+package com.mfstech.powah.common.presenter.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.mfstech.powah.common.presenter.CommonViewModel
 
 abstract class CommonFragment<V : ViewBinding, VM : CommonViewModel> : Fragment(),
     CommonContract.View {

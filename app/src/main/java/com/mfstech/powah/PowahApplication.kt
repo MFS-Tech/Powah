@@ -1,9 +1,9 @@
 package com.mfstech.powah
 
 import android.app.Application
-import com.mfstech.powah.common.database.DeviceDao
-import com.mfstech.powah.common.database.PowahDatabase
-import com.mfstech.powah.common.database.getPowahDatabase
+import com.mfstech.powah.common.business.database.DeviceDao
+import com.mfstech.powah.common.business.database.PowahDatabase
+import com.mfstech.powah.common.business.database.getPowahDatabase
 import com.mfstech.powah.details.business.DetailsRepository
 import com.mfstech.powah.details.business.DetailsRepositoryImpl
 import com.mfstech.powah.details.presenter.DetailsContract
@@ -16,6 +16,10 @@ import com.mfstech.powah.input.business.InputRepository
 import com.mfstech.powah.input.business.InputRepositoryImpl
 import com.mfstech.powah.input.presenter.InputContract
 import com.mfstech.powah.input.presenter.InputViewModel
+import com.mfstech.powah.options.business.DeviceOptionsRepository
+import com.mfstech.powah.options.business.DeviceOptionsRepositoryImpl
+import com.mfstech.powah.options.presenter.DeviceOptionsContract
+import com.mfstech.powah.options.presenter.DeviceOptionsViewModel
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
@@ -55,6 +59,13 @@ class PowahApplication : Application() {
                 }
                 viewModel { (view: DetailsContract.View, id: Int) ->
                     DetailsViewModel(view, id, get(), get())
+                }
+
+                factory<DeviceOptionsRepository> {
+                    DeviceOptionsRepositoryImpl(get())
+                }
+                viewModel { (view: DeviceOptionsContract.View, id: Int) ->
+                    DeviceOptionsViewModel(view, id, get(), get())
                 }
             })
         }

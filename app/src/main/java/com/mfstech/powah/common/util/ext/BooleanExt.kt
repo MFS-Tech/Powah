@@ -1,4 +1,4 @@
-package com.mfstech.powah.common.ext
+package com.mfstech.powah.common.util.ext
 
 fun Boolean?.orFalse(): Boolean {
     if (this == null) {

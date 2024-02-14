@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.model.Device
 import com.mfstech.powah.databinding.ItemDeviceBinding
 
 class HomeDeviceListAdapter(

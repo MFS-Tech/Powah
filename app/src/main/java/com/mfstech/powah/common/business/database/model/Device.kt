@@ -1,4 +1,4 @@
-package com.mfstech.powah.common.database.model
+package com.mfstech.powah.common.business.database.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

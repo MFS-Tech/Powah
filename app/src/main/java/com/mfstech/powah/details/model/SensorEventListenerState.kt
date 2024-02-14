@@ -1,6 +1,6 @@
 package com.mfstech.powah.details.model
 
-import com.mfstech.powah.common.sse.SensorEvent
+import com.mfstech.powah.common.business.sse.SensorEvent
 
 sealed class SensorEventListenerState {
     data object Connecting : SensorEventListenerState()

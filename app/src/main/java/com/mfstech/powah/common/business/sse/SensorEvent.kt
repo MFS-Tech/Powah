@@ -1,4 +1,4 @@
-package com.mfstech.powah.common.sse
+package com.mfstech.powah.common.business.sse
 
 import androidx.annotation.StringRes
 import com.google.gson.annotations.SerializedName

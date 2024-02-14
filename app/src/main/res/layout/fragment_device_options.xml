@@ -6,39 +6,39 @@
     android:background="@drawable/bottomsheet_background"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context="com.mfstech.powah.options.DeviceOptionsDialogFragment">
+    tools:context="com.mfstech.powah.options.presenter.DeviceOptionsDialogFragment">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/device_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:text="Confirmation" />
+        tools:text="Server" />
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/device_route"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:textAlignment="center"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris efficitur, mi vel eleifend bibendum, lacus mi condimentum libero, ut convallis enim dui non neque." />
+        tools:text="192.168.0.1" />
 
     <Button
-        android:id="@+id/positive_button"
-        style="Material3.Button.P"
+        android:id="@+id/edit_button"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/device_options_edit_button" />
+
+    <Button
+        android:id="@+id/delete_button"
+        style="@style/Widget.Material3.Button.UnelevatedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColorHighlight="#D1C9C9"
-        tools:text="Yes" />
-
-    <Button
-        android:id="@+id/negative_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        tools:text="No" />
+        android:text="@string/device_options_delete_button" />
 </LinearLayout>

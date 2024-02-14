@@ -1,7 +1,7 @@
 package com.mfstech.powah.home.business
 
-import com.mfstech.powah.common.database.DeviceDao
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.DeviceDao
+import com.mfstech.powah.common.business.database.model.Device
 import kotlinx.coroutines.flow.Flow
 
 class HomeRepositoryImpl(

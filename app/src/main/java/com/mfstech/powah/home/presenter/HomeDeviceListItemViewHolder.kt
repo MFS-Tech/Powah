@@ -1,9 +1,9 @@
 package com.mfstech.powah.home.presenter
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.mfstech.powah.common.database.model.Device
-import com.mfstech.powah.common.ext.asGone
-import com.mfstech.powah.common.ext.asVisible
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.util.ext.asGone
+import com.mfstech.powah.common.util.ext.asVisible
 import com.mfstech.powah.databinding.ItemDeviceBinding
 
 class HomeDeviceListItemViewHolder(

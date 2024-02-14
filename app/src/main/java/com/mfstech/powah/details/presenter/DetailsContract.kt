@@ -1,8 +1,8 @@
 package com.mfstech.powah.details.presenter
 
-import com.mfstech.powah.common.CommonContract
-import com.mfstech.powah.common.database.model.Device
-import com.mfstech.powah.common.sse.SensorEvent
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.business.sse.SensorEvent
+import com.mfstech.powah.common.presenter.fragment.CommonContract
 
 interface DetailsContract {
 

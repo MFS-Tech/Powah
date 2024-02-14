@@ -1,10 +1,10 @@
-package com.mfstech.powah.common.database
+package com.mfstech.powah.common.business.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.model.Device
 
 const val DB_NAME = "powah_database"
 const val DB_VERSION = 1

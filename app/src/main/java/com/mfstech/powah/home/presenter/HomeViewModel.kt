@@ -1,10 +1,11 @@
 package com.mfstech.powah.home.presenter
 
 import androidx.lifecycle.viewModelScope
-import com.mfstech.powah.common.CommonViewModel
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.presenter.CommonViewModel
 import com.mfstech.powah.home.business.HomeRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
@@ -54,5 +55,9 @@ class HomeViewModel(
 
     override fun onDeviceOptionsDeleteClicked(device: Device): Boolean {
         return viewModelScope.future(dispatcher) { repository.deleteDevice(device) }.get()
+    }
+
+    override fun onDestroy() {
+        dispatcher.cancel()
     }
 }

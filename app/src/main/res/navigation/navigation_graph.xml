@@ -17,7 +17,7 @@
             android:id="@+id/open_details"
             app:destination="@id/nav_graph_details_fragment" />
         <action
-            android:id="@+id/open_confirmation_dialog"
+            android:id="@+id/open_device_options"
             app:destination="@id/nav_graph_device_options_dialog" />
     </fragment>
 
@@ -52,12 +52,12 @@
     </fragment>
     <dialog
         android:id="@+id/nav_graph_device_options_dialog"
-        android:name="com.mfstech.powah.options.DeviceOptionsDialogFragment"
+        android:name="com.mfstech.powah.options.presenter.DeviceOptionsDialogFragment"
         android:label="@string/confirmation_fragment_label"
         tools:layout="@layout/fragment_device_options">
         <argument
-            android:name="data"
-            app:argType="com.mfstech.powah.options.DeviceOptionsDialogState" />
+            android:name="id"
+            app:argType="integer" />
 
         <action
             android:id="@+id/input_device"

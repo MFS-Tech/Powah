@@ -1,10 +1,10 @@
-package com.mfstech.powah.common.database
+package com.mfstech.powah.common.business.database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.model.Device
 import kotlinx.coroutines.flow.Flow
 
 @Dao

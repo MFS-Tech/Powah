@@ -1,7 +1,7 @@
 package com.mfstech.powah.details.presenter
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.mfstech.powah.common.sse.SensorEvent
+import com.mfstech.powah.common.business.sse.SensorEvent
 import com.mfstech.powah.databinding.ItemDeviceSensorStateBinding
 
 class SensorEventViewHolder(

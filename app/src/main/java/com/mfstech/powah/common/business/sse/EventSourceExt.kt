@@ -1,4 +1,4 @@
-package com.mfstech.powah.common.sse
+package com.mfstech.powah.common.business.sse
 
 import com.google.gson.Gson
 import okhttp3.OkHttpClient

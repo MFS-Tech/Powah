@@ -1,12 +1,13 @@
 package com.mfstech.powah.input.presenter
 
 import androidx.lifecycle.viewModelScope
-import com.mfstech.powah.common.CommonViewModel
-import com.mfstech.powah.common.database.model.Device
+import com.mfstech.powah.common.business.database.model.Device
+import com.mfstech.powah.common.presenter.CommonViewModel
 import com.mfstech.powah.common.util.InputWarning
 import com.mfstech.powah.common.util.validate
 import com.mfstech.powah.input.business.InputRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flowOn
@@ -23,7 +24,7 @@ class InputViewModel(
 
     override fun onStart() {
         viewModelScope.launch(dispatcher) {
-            repository.get(id)
+            repository.getDevice(id)
                 .filterNotNull()
                 .onEach { device ->
                     view.bindName(device.name)
@@ -64,5 +65,9 @@ class InputViewModel(
 
     override fun onBackClicked() {
         view.goBack()
+    }
+
+    override fun onDestroy() {
+        dispatcher.cancel()
     }
 }

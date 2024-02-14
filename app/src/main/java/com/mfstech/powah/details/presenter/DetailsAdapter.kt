@@ -3,7 +3,7 @@ package com.mfstech.powah.details.presenter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.mfstech.powah.common.sse.SensorEvent
+import com.mfstech.powah.common.business.sse.SensorEvent
 import com.mfstech.powah.databinding.ItemDeviceSensorStateBinding
 
 class DetailsAdapter : RecyclerView.Adapter<SensorEventViewHolder>() {

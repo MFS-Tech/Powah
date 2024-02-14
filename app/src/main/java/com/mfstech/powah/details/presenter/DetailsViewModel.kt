@@ -1,7 +1,7 @@
 package com.mfstech.powah.details.presenter
 
 import androidx.lifecycle.viewModelScope
-import com.mfstech.powah.common.CommonViewModel
+import com.mfstech.powah.common.presenter.CommonViewModel
 import com.mfstech.powah.details.business.DetailsRepository
 import com.mfstech.powah.details.model.SensorEventListenerState
 import kotlinx.coroutines.Dispatchers
