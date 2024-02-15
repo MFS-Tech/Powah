@@ -5,9 +5,10 @@ import com.mfstech.powah.common.business.database.model.Device
 import com.mfstech.powah.common.presenter.CommonViewModel
 import com.mfstech.powah.options.business.DeviceOptionsRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -29,8 +30,12 @@ class DeviceOptionsViewModel(
                     view.bindDevice(it)
                     device = it
                 }
-                .single()
+                .collect()
         }
+    }
+
+    override fun onDestroy() {
+        dispatcher.cancel()
     }
 
     override fun onDeleteClicked() {

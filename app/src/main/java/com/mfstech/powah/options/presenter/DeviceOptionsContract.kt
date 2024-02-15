@@ -14,5 +14,6 @@ interface DeviceOptionsContract {
         fun onStart()
         fun onDeleteClicked()
         fun onEditClicked()
+        fun onDestroy()
     }
 }

@@ -35,6 +35,11 @@ class DeviceOptionsDialogFragment :
         viewModel.onStart()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.onDestroy()
+    }
+
     override fun bindDevice(device: Device) {
         binding.deviceRoute.isVisibleWhen { device.name.isNotBlank() }
         binding.deviceName.text = device.name.ifBlank { device.route }
